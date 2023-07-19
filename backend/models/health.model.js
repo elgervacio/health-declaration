@@ -8,7 +8,6 @@ const healthSchema = new Schema({
         type: String,
         required: true,
         trim: true
-
     },
     temperature: {
         type: Number,
@@ -18,7 +17,11 @@ const healthSchema = new Schema({
     email: {
         type: String,
         required: true,
-        trim: true
+        trim: true,
+        match: [
+            /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
+            "Please enter a valid email"
+        ]
     },
     phonenumber: {
         type: String,
@@ -29,5 +32,5 @@ const healthSchema = new Schema({
     timestamps: true
 });
 
-const health = mongoose.model('healthDeclaration', healthSchema);
+const health = mongoose.model('health', healthSchema);
 module.exports = health;
